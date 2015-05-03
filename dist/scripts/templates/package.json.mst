@@ -47,9 +47,6 @@
     {{#js-minimize}}
     "gulp-uglify": "1.2.0",
     {{/js-minimize}}
-    {{#css-remove}}
-    "gulp-uncss": "1.0.1",
-    {{/css-remove}}
     "gulp": "3.8.11"
   }
 }

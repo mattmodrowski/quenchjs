@@ -49,7 +49,6 @@ var quench_options = {
 	'css-minimize': false,
 	'css-precompile': true,
 	'css-precompile-type': "sass",
-	'css-remove': false,
 	'css-source': "src/styles",
 	'gulp-sass': true,
 	'images-destination': "dist/images",

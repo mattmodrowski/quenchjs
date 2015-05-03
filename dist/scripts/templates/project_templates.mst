@@ -55,9 +55,6 @@ var sass = require('gulp-sass');
 var stylus = require('gulp-stylus');
 {{/gulp-stylus}}
 {{/css-precompile}}
-{{#css-remove}}
-var uncss = require('gulp-uncss');
-{{/css-remove}}
 {{#browser-sync}}
 var browserSync = require('browser-sync');
 
@@ -114,11 +111,6 @@ gulp.task('styles', function(){
     {{#css-autoprefix}}
     .pipe(autoprefixer('last 2 versions'))
     {{/css-autoprefix}}
-    {{#css-remove}}
-    .pipe(uncss({
-      html: ['index.html', '**/*.html']
-    }))
-    {{/css-remove}}
     {{#css-minimize}}
     .pipe(gulp.dest('{{{css-destination}}}/'))
     .pipe(rename({suffix: '.min'}))
@@ -748,9 +740,6 @@ th {
     {{#js-minimize}}
     "gulp-uglify": "1.2.0",
     {{/js-minimize}}
-    {{#css-remove}}
-    "gulp-uncss": "1.0.1",
-    {{/css-remove}}
     "gulp": "3.8.11"
   }
 }
