@@ -981,6 +981,9 @@ header {
       counter-increment: step-counter-two; }
       #now-what .column:nth-of-type(2) ol li:before {
         content: counter(step-counter-two); }
+  #now-what .disclaimer {
+    color: #67a2c9;
+    margin-top: 4.8rem; }
 
 @media (min-width: 850px) {
   #now-what .container {

@@ -72,6 +72,11 @@
 			}
 		}
 	}
+
+	.disclaimer {
+		color: mix($sub_header_color, #FFF, 75%);
+		margin-top: 4.8rem;
+	}
 }
 
 @media (min-width: $breakpoint) {
