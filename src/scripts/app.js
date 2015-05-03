@@ -58,11 +58,11 @@ var quench_options = {
 	'js': true,
 	'js-coffeescript': false,
 	'js-concatenate': true,
-	'js-destination': "dist/js",
+	'js-destination': "dist/scripts",
 	'js-es6': false,
 	'js-hint': false,
 	'js-minimize': true,
-	'js-source': "src/js"
+	'js-source': "src/scripts"
 };
 var current_file = 'gulpfile.js';
 var isFileSaverSupported = false;

@@ -153,6 +153,9 @@ gulp.task('scripts', function(){
     {{#js-concatenate}}
     .pipe(concat('main.js'))
     {{/js-concatenate}}
+    {{#js-es6}}
+    .pipe(babel())
+    {{/js-es6}}
     {{#js-minimize}}
     .pipe(gulp.dest('{{{js-destination}}}/'))
     .pipe(rename({suffix: '.min'}))
