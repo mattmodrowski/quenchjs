@@ -894,7 +894,6 @@ var quench_options = {
 	'css-minimize': false,
 	'css-precompile': true,
 	'css-precompile-type': "sass",
-	'css-remove': false,
 	'css-source': "src/styles",
 	'gulp-sass': true,
 	'images-destination': "dist/images",
@@ -903,11 +902,11 @@ var quench_options = {
 	'js': true,
 	'js-coffeescript': false,
 	'js-concatenate': true,
-	'js-destination': "dist/js",
+	'js-destination': "dist/scripts",
 	'js-es6': false,
 	'js-hint': false,
 	'js-minimize': true,
-	'js-source': "src/js"
+	'js-source': "src/scripts"
 };
 var current_file = 'gulpfile.js';
 var isFileSaverSupported = false;
