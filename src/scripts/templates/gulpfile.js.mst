@@ -66,16 +66,16 @@ gulp.task('images', function(){
 
 {{#css}}
 gulp.task('styles', function(){
-	{{#gulp-less}}
-	gulp.src(['{{{css-source}}}/**/*.less'])
+  {{#gulp-less}}
+  gulp.src(['{{{css-source}}}/**/*.less'])
     .pipe(plumber({
       errorHandler: function (error) {
         console.log(error.message);
         this.emit('end');
     }}))
     .pipe(less())
-	{{/gulp-less}}
-	{{#gulp-sass}}
+  {{/gulp-less}}
+  {{#gulp-sass}}
   gulp.src(['{{{css-source}}}/**/*.scss'])
     .pipe(plumber({
       errorHandler: function (error) {
@@ -93,7 +93,7 @@ gulp.task('styles', function(){
     }}))
     .pipe(stylus())
   {{/gulp-stylus}}
-  	{{#css-autoprefix}}
+    {{#css-autoprefix}}
     .pipe(autoprefixer('last 2 versions'))
     {{/css-autoprefix}}
     {{#css-remove}}
@@ -116,16 +116,16 @@ gulp.task('styles', function(){
 
 {{#js}}
 gulp.task('scripts', function(){
-	{{#js-coffeescript}}
-	return gulp.src('{{{js-source}}}/**/*.coffee')
-		.pipe(plumber({
+  {{#js-coffeescript}}
+  return gulp.src('{{{js-source}}}/**/*.coffee')
+    .pipe(plumber({
       errorHandler: function (error) {
         console.log(error.message);
         this.emit('end');
     }}))
-		.pipe(coffee({bare: true})
-	{{/js-coffeescript}}
-	{{^js-coffeescript}}
+    .pipe(coffee({bare: true})
+  {{/js-coffeescript}}
+  {{^js-coffeescript}}
   return gulp.src('{{{js-source}}}/**/*.js')
     .pipe(plumber({
       errorHandler: function (error) {
@@ -133,7 +133,7 @@ gulp.task('scripts', function(){
         this.emit('end');
     }}))
   {{/js-coffeescript}}
-  	{{#js-concatenate}}
+    {{#js-concatenate}}
     .pipe(concat('main.js'))
     {{/js-concatenate}}
     {{#js-minimize}}

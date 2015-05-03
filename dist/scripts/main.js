@@ -1100,6 +1100,8 @@ function saveZip() {
 			zip.file("readme.txt", renderFile("readme.txt", true));
 
 			if (!$('#basic-gulpfile').is('checked')) {
+				zip.file("index.html", renderFile("index.html", true));
+
 				if (quench_options.css) {
 					zip.folder(quench_options['css-source']);
 
