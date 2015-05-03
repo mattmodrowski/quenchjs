@@ -1,0 +1,41 @@
+html, body {
+	height: 100%;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+	background: $background_color;
+  color: $font_color;
+  font-family: $font_base;
+  padding-top: calc(6rem + 1px);
+  -webkit-font-smoothing: antialiased;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+header, footer {
+  line-height: 1;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 845px;
+	padding: 0 2rem;
+}
+
+.container-large {
+	margin: 0 auto;
+	max-width: 1200px;
+	padding: 0 2rem;
+}
+
+ins.adsbygoogle {
+	margin-top: 4.8rem;
+}

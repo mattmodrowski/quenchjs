@@ -1,0 +1,41 @@
+#get-started {
+	position: relative;
+
+	&:after {
+		animation: slideDown 2s linear infinite;
+		background: url(../images/arrow-down.svg) no-repeat center center;
+		bottom: -60%;
+		content: '';
+		display: block;
+		height: 2rem;
+		left: 50%;
+		position: absolute;
+		width: 2rem;
+
+		transform: translateX(-50%);
+	}
+}
+
+@media (min-width: $breakpoint) {
+	#get-started {
+		&:after {
+			bottom: -75%;
+		}
+	}
+}
+
+@keyframes slideDown {
+	0% {
+		opacity: 0;
+		transform: translateX(-50%);
+	}
+
+	50% {
+		opacity: 0.5;
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(-50%) translateY(100%);
+	}
+}

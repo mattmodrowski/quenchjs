@@ -1,0 +1,18 @@
+$background_color: #FFF;
+
+$primary_color: #1E4259;
+$sub_header_color: #3583B8;
+$about_color: #D0E3F1;
+$font_color: #555555;
+
+$highlight_color: #85D4AF;
+
+$font_header: 'Katahdin Round', sans-serif;
+$font_base: 'Open Sans', sans-serif;
+
+$breakpoint: 850px;
+
+@function rem($size) {
+	$remSize: $size / 10px;
+	@return #{$remSize}rem;
+}

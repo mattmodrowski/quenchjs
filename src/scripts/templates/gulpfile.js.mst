@@ -1,0 +1,175 @@
+var gulp = require('gulp'),
+    plumber = require('gulp-plumber'),
+    rename = require('gulp-rename');
+{{#css-autoprefix}}
+var autoprefixer = require('gulp-autoprefixer');
+{{/css-autoprefix}}
+{{#js-es6}}
+var babel = require('gulp-babel');
+{{/js-es6}}
+{{#js-coffeescript}}
+var coffee = require('gulp-coffee');
+{{/js-coffeescript}}
+{{#js-concatenate}}
+var concat = require('gulp-concat');
+{{/js-concatenate}}
+{{#js-hint}}
+var jshint = require('gulp-jshint');
+{{/js-hint}}
+{{#js-minimize}}
+var uglify = require('gulp-uglify');
+{{/js-minimize}}
+{{#images-optimize}}
+var imagemin = require('gulp-imagemin'),
+var cache = require('gulp-cache');
+{{/images-optimize}}
+{{#css-minimize}}
+var minifycss = require('gulp-minify-css');
+{{/css-minimize}}
+{{#css-precompile}}
+{{#gulp-less}}
+var less = require('gulp-less');
+{{/gulp-less}}
+{{#gulp-sass}}
+var sass = require('gulp-sass');
+{{/gulp-sass}}
+{{#gulp-stylus}}
+var stylus = require('gulp-stylus');
+{{/gulp-stylus}}
+{{/css-precompile}}
+{{#css-remove}}
+var uncss = require('gulp-uncss');
+{{/css-remove}}
+{{#browser-sync}}
+var browsersync = require('browser-sync');
+
+gulp.task('browser-sync', function() {
+  browserSync({
+    server: {
+       baseDir: "./"
+    }
+  });
+});
+
+gulp.task('bs-reload', function () {
+  browserSync.reload();
+});
+{{/browser-sync}}
+
+{{#images-optimize}}
+gulp.task('images', function(){
+  gulp.src('{{{images-source}}}/**/*')
+    .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
+    .pipe(gulp.dest('{{{images-destination}}}/'));
+});
+{{/images-optimize}}
+
+{{#css}}
+gulp.task('styles', function(){
+	{{#gulp-less}}
+	gulp.src(['{{{css-source}}}/**/*.less'])
+    .pipe(plumber({
+      errorHandler: function (error) {
+        console.log(error.message);
+        this.emit('end');
+    }}))
+    .pipe(less())
+	{{/gulp-less}}
+	{{#gulp-sass}}
+  gulp.src(['{{{css-source}}}/**/*.scss'])
+    .pipe(plumber({
+      errorHandler: function (error) {
+        console.log(error.message);
+        this.emit('end');
+    }}))
+    .pipe(sass())
+  {{/gulp-sass}}
+  {{#gulp-stylus}}
+  gulp.src(['{{{css-source}}}/**/*.styl'])
+    .pipe(plumber({
+      errorHandler: function (error) {
+        console.log(error.message);
+        this.emit('end');
+    }}))
+    .pipe(stylus())
+  {{/gulp-stylus}}
+  	{{#css-autoprefix}}
+    .pipe(autoprefixer('last 2 versions'))
+    {{/css-autoprefix}}
+    {{#css-remove}}
+    .pipe(uncss(
+      html: ['index.html'], ['**/*.html']
+    ))
+    {{/css-remove}}
+    {{#css-minimize}}
+    .pipe(gulp.dest('{{{css-destination}}}/'))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(minifycss())
+    {{/css-minimize}}
+    .pipe(gulp.dest('{{{css-destination}}}/'))
+    {{#browser-sync}}
+    .pipe(browserSync.reload({stream:true}))
+    {{/browser-sync}}
+  }
+});
+{{/css}}
+
+{{#js}}
+gulp.task('scripts', function(){
+	{{#js-coffeescript}}
+	return gulp.src('{{{js-source}}}/**/*.coffee')
+		.pipe(plumber({
+      errorHandler: function (error) {
+        console.log(error.message);
+        this.emit('end');
+    }}))
+		.pipe(coffee({bare: true})
+	{{/js-coffeescript}}
+	{{^js-coffeescript}}
+  return gulp.src('{{{js-source}}}/**/*.js')
+    .pipe(plumber({
+      errorHandler: function (error) {
+        console.log(error.message);
+        this.emit('end');
+    }}))
+  {{/js-coffeescript}}
+  	{{#js-concatenate}}
+    .pipe(concat('main.js'))
+    {{/js-concatenate}}
+    {{#js-minimize}}
+    .pipe(gulp.dest('{{{js-destination}}}/'))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(uglify())
+    {{/js-minimize}}
+    .pipe(gulp.dest('{{{js-destination}}}/'))
+    {{#browser-sync}}
+    .pipe(browserSync.reload({stream:true}))
+    {{/browser-sync}}
+  }
+});
+{{/js}}
+
+gulp.task('default', {{#browser-sync}}['browser-sync'], {{/browser-sync}}function(){
+  {{#css}}
+  {{#gulp-less}}
+  gulp.watch("{{{css-source}}}/**/*.less", ['styles']);
+  {{/gulp-less}}
+  {{#gulp-sass}}
+  gulp.watch("{{{css-source}}}/**/*.scss", ['styles']);
+  {{/gulp-sass}}
+  {{#gulp-stylus}}
+  gulp.watch("{{{css-source}}}/**/*.stylus", ['styles']);
+  {{/gulp-stylus}}
+  {{/css}}
+  {{#js}}
+  {{#js-coffeescript}}
+  gulp.watch("{{{js-source}}}/**/*.coffee", ['scripts']);
+  {{/js-coffeescript}}
+  {{^js-coffeescript}}
+  gulp.watch("{{{js-source}}}/**/*.js", ['scripts']);
+  {{/js-coffeescript}}
+  {{/js}}
+  {{#browser-sync}}
+  gulp.watch("*.html", ['bs-reload']);
+  {{/browser-sync}}
+});

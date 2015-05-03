@@ -1,0 +1,241 @@
+#file-viewer-wrapper {
+	display: flex;
+	flex-direction: column;
+	margin-top: 2.4rem;
+}
+
+#file-wrapper {
+	background: $about_color;
+	border: 1px solid darken($about_color, 10%);
+	border-radius: 0 5px 5px 5px;
+	box-shadow: inset 0 1px 0 mix($about_color, #FFF, 75%), 0 2px 4px #F5F5F5;
+	flex: 1 0 auto;
+	overflow-x: hidden;
+	padding: 1rem;
+	position: relative;
+	z-index: 4;
+
+	&:after {
+		background: $about_color;
+		content: '';
+		display: block;
+		width: 330px;
+		position: absolute;
+		height: 2px;
+		top: 0;
+		left: 0;
+		z-index: 6;
+	}
+
+	&:before {
+		background: url('../images/loading.svg') no-repeat center center;
+		content: '';
+		display: block;
+		height: 5rem;
+		left: 50%;
+		opacity: 0;
+		pointer-events: none;
+		position: absolute;
+		top: 50%;
+		transform: translateX(-50%) translateY(-50%);
+		width: 5rem;
+		z-index: 9;
+
+		transition: opacity 0.125s ease-in;
+	}
+
+	&.loading:before {
+		opacity: 1;
+	}
+
+	pre {
+		margin: 0;
+	}
+
+	code {
+		background: #272727;
+		border-radius: 0 0 4px 4px;
+		box-sizing: border-box;
+		color: white;
+		font-size: 1.4rem;
+		white-space: pre-wrap;
+		white-space: -moz-pre-wrap;
+		white-space: -pre-wrap;
+		white-space: -o-pre-wrap;
+		word-wrap: break-word;
+	}
+}
+
+#file-toolbar {
+	background: #4C4C4C;
+	border-bottom: 1px solid mix(#4C4C4C, #FFF, 95%);
+	border-radius: 4px 4px 0 0;
+	box-shadow: 0 1px solid mix(#4C4C4C, #000, 50%);
+	font-size: 1.3rem;
+	padding: 1.2rem;
+
+	li, a {
+		display: inline-block;
+	}
+
+	li {
+		margin-right: 1.2rem;
+	}
+
+	a {
+		color: mix(#4C4C4C, #FFF, 20%);
+		text-decoration: none;
+		text-shadow: 0 -1px 0 mix(#4C4C4C, #000, 85%);
+	}
+
+	&:after {
+		background: #a5c261;
+		border-radius: 4px;
+		bottom: -4.2rem;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+		color: darken(#a5c261, 50%);
+		content: 'Copied';
+		display: block;
+		opacity: 0;
+		padding: 0.6rem 1.2rem;
+		pointer-events: none;
+		position: absolute;
+		right: 1.2rem;
+		text-shadow: 0 1px 0 lighten(#a5c261, 10%);
+		transform: translateY(25%);
+		transition: opacity 0.25s ease-in, transform 0.25s ease-in;
+	}
+
+	&.flash-copied:after {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+#tabs {
+	order: 2;
+
+	li, a {
+		display: inline-block;
+	}
+
+	a {
+		background: lighten($about_color, 10%);
+		border: 1px solid $about_color;
+		border-bottom: none;
+		border-radius: 5px 5px 0 0;
+		box-shadow: inset 0 1px 0 mix($about_color, #FFF, 25%);
+		box-sizing: border-box;
+		color: mix($primary_color, $about_color, 75%);
+		font-size: 1.4rem;
+		line-height: 1;
+		margin-right: 0.6rem;
+		padding: 1.2rem 0.6rem;
+		position: relative;
+		text-decoration: none;
+		text-shadow: 0 1px 0 mix(lighten($about_color, 10%), #FFF, 75%);
+		top: 1px;
+
+		&.active {
+			background: $about_color;
+			border: 1px solid darken($about_color, 10%);
+			border-bottom: none;
+			box-shadow: inset 0 1px 0 mix($about_color, #FFF, 75%);
+			color: $primary_color;
+			text-shadow: 0 1px 0 mix($about_color, #FFF, 75%);
+			z-index: 5;
+		}
+	}
+
+	li:last-child a {
+		margin-right: 0;
+	}
+}
+
+#tabs-actions {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+#actions {
+	margin-bottom: 2.4rem;
+	order: 1;
+
+	li, a {
+		display: block;
+	}
+
+	li {
+		margin-left: 0;
+	}
+
+	a.button-primary {
+		font-size: 1.3rem;
+		padding: 1.35rem 0;
+		text-align: center;
+	}
+}
+
+@media (min-width: $breakpoint) {
+	#file-viewer-wrapper {
+		display: flex;
+		flex: 1 0 auto;
+		flex-direction: column;
+		margin-left: 1.2rem;
+		margin-top: 0;
+	}
+
+	#file-wrapper {
+		&:after {
+			width: 435px;
+		}
+
+		code {
+			overflow: auto;
+			padding: 1.2rem;
+			position: absolute;
+			left: 1rem; top: 5.3rem; right: 1rem; bottom: 1rem;
+			z-index: 7;
+		}
+	}
+
+	#file-toolbar {
+		position: absolute;
+		top: 1rem;
+		left: 1rem;
+		right: 1rem;
+		z-index: 8;
+	}
+
+	#tabs {
+		order: 1;
+
+		a {
+			margin-right: 1.2rem;
+			padding: 2rem 3rem;
+		}
+	}
+
+	#actions {
+		margin-bottom: 0;
+		order: 2;
+
+		li, a {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		li {
+			margin-left: 1.2rem;
+		}
+
+		a.button-primary {
+			padding: 1.35rem 2.5rem;
+		}
+	}
+
+	#tabs-actions {
+		flex-direction: row;
+	}
+}

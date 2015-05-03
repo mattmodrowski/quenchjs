@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Quench: The Gulp file generator.</title>
+
+  <meta name="description" content="Easily automate your next web project with Gulp.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="dist/styles/screen.min.css">
+</head>
+<body>
+	<header>
+		<h1>Quench</h1>
+	</header>
+
+	<div id="sub-header">
+		<p>The Gulp file generator.</p>
+		<p>Easily automate your next web project.</p>
+		<p><a href="#app" class="button button-primary" id="get-started">Get Started</a></p>
+	</div>
+
+	<div id="about">
+		<div class="container">
+			<p>Gulp is a command-line JavaScript task runner that automates your web workflow by way of self-scripted tasks. Quench easily creates those self-scripted tasks based on your custom input.</p>
+			<div class="features">
+				<div class="feature">
+					<figure class="feature-image">css</figure>
+					<div class="feature-list">
+						<h2>CSS Automation</h2>
+						<ul>
+							<li>Autoprefix</li>
+							<li>Compile pre-processors</li>
+							<li>Minimize</li>
+							<li>Remove unused CSS</li>
+						</ul>
+					</div>
+				</div>
+				<div class="feature">
+					<figure class="feature-image">js</figure>
+					<div class="feature-list">
+						<h2>JavaScript Automation</h2>
+						<ul>
+							<li>Compress</li>
+							<li>Concatenate</li>
+							<li>Convert ES6 to ES5</li>
+							<li>Lint</li>
+						</ul>
+					</div>
+				</div>
+				<div class="feature">
+					<figure class="feature-image img">img</figure>
+					<div class="feature-list">
+						<h2>Images and Beyond</h2>
+						<ul>
+							<li>Compress Images</li>
+							<li>Sync browsers and devices</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- QuenchJS -->
+			<ins class="adsbygoogle"
+			     style="display:block"
+			     data-ad-client="ca-pub-9337959915001478"
+			     data-ad-slot="2075179180"
+			     data-ad-format="auto"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</div>
+	</div>
+
+	<div id="app">
+		<div class="container-large">
+			<div id="options">
+				<h2>Gulp Options</h2>
+				<form action="#">
+					<fieldset>
+					  <div class="fieldset-wrap">
+					  <legend>Basic Options</legend>
+					  <div class="fieldset-group">
+					  <div class="input-group" data-note="Do not include the directory framework">
+					    <div class="input-field">
+					      <input type="checkbox" id="basic-gulpfile" name="basic-gulpfile"><label for="basic-gulpfile">Only save gulpfile.js and package.json</label>
+					    </div>
+					  </div>
+					  </div>
+					  </div>
+					</fieldset>
+					<fieldset>
+					  <div class="fieldset-wrap">
+					  <legend>CSS</legend>
+					  <div class="fieldset-group">
+					  <div class="input-group" data-note="Where Gulp will look for your CSS files">
+					    <div class="input-field">
+					      <label for="css-source">Source</label><input type="text" id="css-source" name="css-source" value="src/styles">
+					    </div>
+					  </div>
+					  <div class="input-group" data-note="Where Gulp will output your CSS files">
+					    <div class="input-field">
+					      <label for="css-destination">Destination</label><input type="text" id="css-destination" name="css-destination" value="src/styles">
+					    </div>
+					  </div>
+					  <div class="input-group" data-note="Use one of the common CSS precompile engines to render your CSS">
+					    <div class="input-field">
+					      <input type="checkbox" id="css-precompile" name="css-precompile" checked><label for="css-precompile">Pre-compile</label>
+					    </div>
+					  </div>
+					  <div class="input-group sub-input-group" data-note="">
+					    <div class="input-field">
+					      <label for="css-precompile-type">CSS Pre-compilation Engine</label>
+					      <div class="select-style">
+					      <select id="css-precompile-type" name="css-precompile-type">
+					      <option value="none" data-note="">None</option>
+					      <option value="less" data-note="Use gulp-less v3.0.3">Less</option>
+					      <option value="sass" data-note="Use gulp-sass v1.3.3" selected>Sass</option>
+					      <option value="stylus" data-note="Use gulp-stylus v2.0.1">Stylus</option>
+					      </select>
+					      </div>
+					    </div>
+					  </div>
+					  <div class="input-group" data-note="Autoprefix your CSS. Supports the last two versions of the most common browsers. <span>Use gulp-autoprefixer v2.2.0</span>">
+					    <div class="input-field">
+					      <input type="checkbox" id="css-autoprefix" name="css-autoprefix" checked><label for="css-autoprefix">Autoprefix</label>
+					    </div>
+					  </div>
+					  <div class="input-group" data-note="Minimize your CSS. Rewrites to consolidate your CSS using merging, shorthand, and other methods to. <span>Use gulp-minify-css v1.0.0</span>">
+					    <div class="input-field">
+					      <input type="checkbox" id="css-minimize" name="css-minimize"><label for="css-minimize">Minimize</label>
+					    </div>
+					  </div>
+					  <div class="input-group" data-note="Remove CSS not being used in render your HTML <span>Use gulp-uncss v1.0.1</span>">
+					    <div class="input-field">
+					      <input type="checkbox" id="css-remove" name="css-remove"><label for="css-remove">Remove unnecessary CSS</label>
+					    </div>
+					  </div>
+					  </div>
+					  </div>
+					</fieldset>
+					<fieldset>
+					  <div class="fieldset-wrap">
+					  <legend>JavaScript</legend>
+					  <div class="fieldset-group">
+					  <div class="input-group" data-note="Where Gulp will look for your JavaScript files">
+					    <div class="input-field">
+					      <label for="js-source">Source</label><input type="text" id="js-source" name="js-source" value="src/js">
+					    </div>
+					  </div>
+					  <div class="input-group" data-note="Where Gulp will ouput your JavaScript files">
+					    <div class="input-field">
+					      <label for="js-destination">Destination</label><input type="text" id="js-destination" name="js-destination" value="dest/js">
+					    </div>
+					  </div>
+					  <div class="input-group" data-note="Compile your CoffeeScript files into JavaScript <span>Use gulp-coffee v2.3.1</span>">
+					    <div class="input-field">
+					      <input type="checkbox" id="js-coffeescript" name="js-coffeescript"><label for="js-coffeescript">Compile CoffeeScript</label>
+					    </div>
+					  </div>
+					  <div class="input-group" data-note="Turn ES6 code into vanilla ES5 <span>Use gulp-babel v5.1.0</span>">
+					    <div class="input-field">
+					      <input type="checkbox" id="js-es6" name="js-es6"><label for="js-es6">Convert ES6 to ES5</label>
+					    </div>
+					  </div>
+					  <div class="input-group" data-note="Detect error and potential problems in your JavaScript <span>Use gulp-jshint v1.10.0</span>">
+					    <div class="input-field">
+					      <input type="checkbox" id="js-hint" name="js-hint"><label for="js-hint">Hint</label>
+					    </div>
+					  </div>
+					  <div class="input-group" data-note="Combine your JavaScript files <span>Use gulp-concat v2.5.2</span>">
+					    <div class="input-field">
+					      <input type="checkbox" id="js-concatenate" name="js-concatenate" checked><label for="js-concatenate">Concatenate</label>
+					    </div>
+					  </div>
+					  <div class="input-group" data-note="Minify your JavaScript <span>Use gulp-uglify v1.2.0</span>">
+					    <div class="input-field">
+					      <input type="checkbox" id="js-minimize" name="js-minimize" checked><label for="js-minimize">Minimize</label>
+					    </div>
+					  </div>
+					  </div>
+					  </div>
+					</fieldset>
+					<fieldset>
+					  <div class="fieldset-wrap">
+					  <legend>Images</legend>
+					  <div class="fieldset-group">
+					  <div class="input-group" data-note="Where Gulp will look for your image files">
+					    <div class="input-field">
+					      <label for="images-source">Source</label><input type="text" id="images-source" name="images-source" value="src/images">
+					    </div>
+					  </div>
+					  <div class="input-group" data-note="Where Gulp will output your image files">
+					    <div class="input-field">
+					      <label for="images-destination">Destination</label><input type="text" id="images-destination" name="images-destination" value="dest/images">
+					    </div>
+					  </div>
+					  <div class="input-group" data-note="Minify PNG, JPEG, GIF, and SVG images <span>Use gulp-imagemin v2.2.1</span>">
+					    <div class="input-field">
+					      <input type="checkbox" id="images-optimize" name="images-optimize" checked><label for="images-optimize">Optimize Images</label>
+					    </div>
+					  </div>
+					  </div>
+					  </div>
+					</fieldset>
+					<fieldset>
+					  <div class="fieldset-wrap">
+					  <legend>BrowserSync</legend>
+					  <div class="fieldset-group">
+					  <div class="input-group" data-note="Synchronize file changes and interactions across multiple devices <span>Use gulp-imagemin v2.2.1</span>">
+					    <div class="input-field">
+					      <input type="checkbox" id="browser-sync" name="browser-sync" checked><label for="browser-sync">Use BrowserSync</label>
+					    </div>
+					  </div>
+					  </div>
+					  </div>
+					</fieldset>
+				</form>
+			</div>
+			<div id="file-viewer-wrapper">
+				<div id="tabs-actions">
+					<ul id="tabs">
+						<li><a href="#" class="active" data-file="gulpfile.js">gulpfile.js</a>
+						<li><a href="#"  data-file="package.json">package.json</a>
+						<li><a href="#"  data-file="readme.txt">readme.txt</a>
+					</ul>
+					<div id="actions">
+						<!--<li><a href="#" class="button button-icon button-expand">Expand</a>-->
+						<li><a href="#" class="button button-primary" id="save-project">Save Project as Zip</a>
+					</div>
+				</div>
+				<div id="file-wrapper">
+					<ul id="file-toolbar">
+						<li><a href="#" id="toolbar-copy" data-clipboard-target="file">Copy</a></li>
+						<li><a href="#" id="toolbar-save">Save</a></li>
+					</ul>
+					<pre><code id="file">Your browser doesn't currently support JavaScript.</code></pre>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="now-what">
+		<h2>Now what?</h2>
+			<div class="container">
+				<div class="column">
+					<ol>
+						<li>
+							<p>Unzip the downloaded project files.</p>
+						</li>
+						<li>
+							<p>Use the command line to navigate to the project directory.</p>
+							<p>On a Mac, launch Terminal. On a Windows machine, you’re looking for Command Prompt.</p>
+							<p>To change directories, type cd followed by a space and then the path to the project directory.</p>
+						</li>
+					</ol>
+				</div>
+				<div class="column">
+					<ol>
+						<li>
+							<p>Run <code>npm install</code>.</p>
+							<p>Both <a href="http://nodejs.com">Node</a> and <a href="http://gulpjs.com">Gulp</a> are prerequisties for this and the following step.</p>
+						</li>
+						<li>
+							<p>Run <code>gulp</code>.</p>
+						</li>
+						<li>
+							<p>Code away!</p>
+						</li>
+					</ol>
+				</div>
+			</div>
+	</div>
+
+	<footer>
+		<ul>
+			<li><a href="mailto:feedback@quenchjs.com">Feedback</a>
+			<li><a href="http://github.com/mattmodrowski/quenchjs">Github</a>
+		</ul>
+		<p><a href="http://mattmodrowski.com/">by Matt Modrowski</a></p>
+	</footer>
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-62506053-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="dist/scripts/main.min.js"></script>
+</body>
+</html>

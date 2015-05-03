@@ -1,0 +1,44 @@
+.button {
+	background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), #E8F1F7;
+	box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.10), inset 0px 1px 0px 0px rgba(255,255,255,0.25);
+	border: 1px solid #ADC4D3;
+	border-radius: 4rem;
+	display: inline-block;
+	line-height: 1;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px lighten(#85D4AF, 10%);
+}
+
+.button-primary {
+	background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), $highlight_color;
+	border-color: #6ABB95;
+	color: #165C3B;
+	padding: 1.5rem 3.5rem;
+
+	&.loading {
+		background: url(../images/loading.svg) no-repeat center center, linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), $highlight_color;
+		color: rgba(0, 0, 0, 0);
+		text-shadow: none;
+	}
+}
+
+.button-icon {
+	text-indent: -9999px;
+}
+
+.button-expand {
+	background: url(../images/icon-expand.svg) no-repeat center center, linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), #E8F1F7;
+	background-size: 40%;
+	height: 4rem;
+	width: 4rem;
+}
+
+@media (min-width: $breakpoint) {
+	.button-primary {
+		transition: background 0.1s ease-in-out;
+
+		&:hover {
+			background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), lighten(#85D4AF, 6%);
+		}
+	}
+}

@@ -1,0 +1,58 @@
+footer {
+	background: url(../images/noise.png), $primary_color;
+	border-top: 1px solid mix($primary_color, #000, 90%);
+	bottom: 0;
+	box-shadow: inset 0 1px 0 mix($primary_color, #FFF, 90%);
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.1rem;
+	left: 0;
+	padding: 1.2rem;
+	position: fixed;
+	width: 100%;
+	z-index: 10;
+
+	ul {
+		color: mix($primary_color, #FFF, 20%);
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	p {
+		margin: 0;
+
+		a {
+			color: mix($primary_color, #FFF, 40%);
+			text-decoration: none;
+		}
+	}
+
+	li, a {
+		display: inline-block;
+	}
+
+	li a {
+		color: mix($primary_color, #FFF, 20%);
+	}
+
+	li:before {
+		content: '|';
+		margin: 0 0.5rem;
+	}
+
+	li:first-child:before {
+		display: none;
+	}
+}
+
+@media (min-width: $breakpoint) {
+	footer {
+		font-size: rem(12px);
+
+		p a:hover {
+			text-decoration: underline;
+		}
+	}
+}

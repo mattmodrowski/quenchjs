@@ -1,0 +1,39 @@
+#sub-header {
+	background: url(../images/header-bg.svg) no-repeat bottom center, $sub_header_color;
+	background-size: 105% auto;
+	padding: 4rem 2rem 12% 2rem;
+	position: relative;
+	text-align: center;
+
+	&:before {
+		background: linear-gradient(180deg, mix($sub_header_color, $background_color, 50%) 0%, $sub_header_color 100%);
+		content: '';
+		height: 6rem;
+		left: 0;
+		position: absolute;
+		top: -6rem;
+		width: 100%;
+	}
+
+	h2 {
+		margin: 0;
+	}
+
+	p {
+		color: mix($sub_header_color, #FFF, 30%);
+		font-size: 1.8rem;
+		margin: 0 0 3rem 0;
+	}
+
+	p:nth-of-type(1) {
+		color: mix($sub_header_color, #FFF, 10%);
+		font-size: 3.6rem;
+		margin: 0 0 1rem 0;
+	}
+}
+
+@media (min-width: $breakpoint) {
+	#sub-header {
+		padding: 8rem 2rem 8% 2rem;
+	}
+}
