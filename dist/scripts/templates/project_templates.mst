@@ -115,9 +115,9 @@ gulp.task('styles', function(){
     .pipe(autoprefixer('last 2 versions'))
     {{/css-autoprefix}}
     {{#css-remove}}
-    .pipe(uncss(
-      html: ['index.html'], ['**/*.html']
-    ))
+    .pipe(uncss({
+      html: ['index.html', '**/*.html']
+    }))
     {{/css-remove}}
     {{#css-minimize}}
     .pipe(gulp.dest('{{{css-destination}}}/'))
@@ -713,12 +713,18 @@ th {
     {{#css-autoprefix}}
     "gulp-autoprefixer": "2.1.0",
     {{/css-autoprefix}}
+    {{#js-es6}}
+    "gulp-babel": "5.1.0",
+    {{/js-es6}}
     {{#images-optimize}}
     "gulp-cache": "0.2.8",
     {{/images-optimize}}
     {{#js-concatenate}}
     "gulp-concat": "2.5.2",
     {{/js-concatenate}}
+    {{#js-hint}}
+    "gulp-jshint": "1.10.0",
+    {{/js-hint}}
     {{#images-optimize}}
     "gulp-imagemin": "2.2.1",
     {{/images-optimize}}

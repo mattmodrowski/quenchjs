@@ -1099,7 +1099,7 @@ function saveZip() {
 			zip.file("gulpfile.js", renderFile("gulpfile.js", true));
 			zip.file("readme.txt", renderFile("readme.txt", true));
 
-			if (!$('#basic-gulpfile').is('checked')) {
+			if (quench_options['basic-gulpfile'] === false) {
 				zip.file("index.html", renderFile("index.html", true));
 
 				if (quench_options.css) {

@@ -97,9 +97,9 @@ gulp.task('styles', function(){
     .pipe(autoprefixer('last 2 versions'))
     {{/css-autoprefix}}
     {{#css-remove}}
-    .pipe(uncss(
-      html: ['index.html'], ['**/*.html']
-    ))
+    .pipe(uncss({
+      html: ['index.html', '**/*.html']
+    }))
     {{/css-remove}}
     {{#css-minimize}}
     .pipe(gulp.dest('{{{css-destination}}}/'))
