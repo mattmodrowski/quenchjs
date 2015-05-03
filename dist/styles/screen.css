@@ -444,7 +444,10 @@ header {
             transition: background 0.1s ease-in-out; }
     .button-primary:hover {
       background: -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), #9cdcbe;
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), #9cdcbe; } }
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), #9cdcbe; }
+    .button-primary.loading:hover {
+      background: url(../images/loading.svg) no-repeat center center, -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), #9cdcbe;
+      background: url(../images/loading.svg) no-repeat center center, linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), #9cdcbe; } }
 
 #about {
   background-color: #D0E3F1;

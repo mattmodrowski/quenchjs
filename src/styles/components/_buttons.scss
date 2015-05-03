@@ -40,5 +40,9 @@
 		&:hover {
 			background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), lighten(#85D4AF, 6%);
 		}
+
+		&.loading:hover {
+			background: url(../images/loading.svg) no-repeat center center, linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), lighten(#85D4AF, 6%);
+		}
 	}
 }
