@@ -7,12 +7,12 @@
   <title></title>
   <meta name="description" content="">
 {{#css}}
-  <link rel="stylesheet" href="{{css-destination}}/screen.min.css">
+  <link rel="stylesheet" href="{{[css-destination}]}/screen.min.css">
 {{/css}}
 </head>
 <body>
 {{#js}}
-  <script src="{{js-destination}}/main.min.js"></script>
+  <script src="{{[js-destination}}]/main.min.js"><{{!}}/script>
 {{/js}}
 </body>
 </html>

@@ -7,12 +7,12 @@
   <title></title>
   <meta name="description" content="">
 {{#css}}
-  <link rel="stylesheet" href="{{css-destination}}/screen.min.css">
+  <link rel="stylesheet" href="{{{css-destination}}}/screen.min.css">
 {{/css}}
 </head>
 <body>
 {{#js}}
-  <script src="{{js-destination}}/main.min.js"></script>
+  <script src="{{{js-destination}}}/main.min.js"><{{!}}/script>
 {{/js}}
 </body>
 </html>
@@ -39,7 +39,7 @@ var uglify = require('gulp-uglify');
 {{/js-minimize}}
 {{#images-optimize}}
 var imagemin = require('gulp-imagemin'),
-var cache = require('gulp-cache');
+    cache = require('gulp-cache');
 {{/images-optimize}}
 {{#css-minimize}}
 var minifycss = require('gulp-minify-css');
@@ -55,11 +55,8 @@ var sass = require('gulp-sass');
 var stylus = require('gulp-stylus');
 {{/gulp-stylus}}
 {{/css-precompile}}
-{{#css-remove}}
-var uncss = require('gulp-uncss');
-{{/css-remove}}
 {{#browser-sync}}
-var browsersync = require('browser-sync');
+var browserSync = require('browser-sync');
 
 gulp.task('browser-sync', function() {
   browserSync({
@@ -114,11 +111,6 @@ gulp.task('styles', function(){
     {{#css-autoprefix}}
     .pipe(autoprefixer('last 2 versions'))
     {{/css-autoprefix}}
-    {{#css-remove}}
-    .pipe(uncss(
-      html: ['index.html'], ['**/*.html']
-    ))
-    {{/css-remove}}
     {{#css-minimize}}
     .pipe(gulp.dest('{{{css-destination}}}/'))
     .pipe(rename({suffix: '.min'}))
@@ -128,7 +120,6 @@ gulp.task('styles', function(){
     {{#browser-sync}}
     .pipe(browserSync.reload({stream:true}))
     {{/browser-sync}}
-  }
 });
 {{/css}}
 
@@ -154,6 +145,9 @@ gulp.task('scripts', function(){
     {{#js-concatenate}}
     .pipe(concat('main.js'))
     {{/js-concatenate}}
+    {{#js-es6}}
+    .pipe(babel())
+    {{/js-es6}}
     {{#js-minimize}}
     .pipe(gulp.dest('{{{js-destination}}}/'))
     .pipe(rename({suffix: '.min'}))
@@ -163,7 +157,6 @@ gulp.task('scripts', function(){
     {{#browser-sync}}
     .pipe(browserSync.reload({stream:true}))
     {{/browser-sync}}
-  }
 });
 {{/js}}
 
@@ -260,6 +253,11 @@ Images
     gulp images
 
 Running the gulp images task will run your selected image tasks once.
+
+Feedback
+========
+
+I'd love to hear your thoughts on Quench, any suggestions you might have, or any bugs you come across. Send all feedback to: feedback@quenchjs.com
 {{/images-optimize}}
 </script><script type="x-tmpl-mustache" id="template-screencss">@import 'base/variables';
 
@@ -715,12 +713,18 @@ th {
     {{#css-autoprefix}}
     "gulp-autoprefixer": "2.1.0",
     {{/css-autoprefix}}
+    {{#js-es6}}
+    "gulp-babel": "5.1.0",
+    {{/js-es6}}
     {{#images-optimize}}
     "gulp-cache": "0.2.8",
     {{/images-optimize}}
     {{#js-concatenate}}
     "gulp-concat": "2.5.2",
     {{/js-concatenate}}
+    {{#js-hint}}
+    "gulp-jshint": "1.10.0",
+    {{/js-hint}}
     {{#images-optimize}}
     "gulp-imagemin": "2.2.1",
     {{/images-optimize}}
@@ -741,9 +745,6 @@ th {
     {{#js-minimize}}
     "gulp-uglify": "1.2.0",
     {{/js-minimize}}
-    {{#css-remove}}
-    "gulp-uncss": "1.0.1",
-    {{/css-remove}}
     "gulp": "3.8.11"
   }
 }

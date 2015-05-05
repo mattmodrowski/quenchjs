@@ -21,7 +21,7 @@ var uglify = require('gulp-uglify');
 {{/js-minimize}}
 {{#images-optimize}}
 var imagemin = require('gulp-imagemin'),
-var cache = require('gulp-cache');
+    cache = require('gulp-cache');
 {{/images-optimize}}
 {{#css-minimize}}
 var minifycss = require('gulp-minify-css');
@@ -37,11 +37,8 @@ var sass = require('gulp-sass');
 var stylus = require('gulp-stylus');
 {{/gulp-stylus}}
 {{/css-precompile}}
-{{#css-remove}}
-var uncss = require('gulp-uncss');
-{{/css-remove}}
 {{#browser-sync}}
-var browsersync = require('browser-sync');
+var browserSync = require('browser-sync');
 
 gulp.task('browser-sync', function() {
   browserSync({
@@ -96,11 +93,6 @@ gulp.task('styles', function(){
     {{#css-autoprefix}}
     .pipe(autoprefixer('last 2 versions'))
     {{/css-autoprefix}}
-    {{#css-remove}}
-    .pipe(uncss(
-      html: ['index.html'], ['**/*.html']
-    ))
-    {{/css-remove}}
     {{#css-minimize}}
     .pipe(gulp.dest('{{{css-destination}}}/'))
     .pipe(rename({suffix: '.min'}))
@@ -110,7 +102,6 @@ gulp.task('styles', function(){
     {{#browser-sync}}
     .pipe(browserSync.reload({stream:true}))
     {{/browser-sync}}
-  }
 });
 {{/css}}
 
@@ -136,6 +127,9 @@ gulp.task('scripts', function(){
     {{#js-concatenate}}
     .pipe(concat('main.js'))
     {{/js-concatenate}}
+    {{#js-es6}}
+    .pipe(babel())
+    {{/js-es6}}
     {{#js-minimize}}
     .pipe(gulp.dest('{{{js-destination}}}/'))
     .pipe(rename({suffix: '.min'}))
@@ -145,7 +139,6 @@ gulp.task('scripts', function(){
     {{#browser-sync}}
     .pipe(browserSync.reload({stream:true}))
     {{/browser-sync}}
-  }
 });
 {{/js}}
 

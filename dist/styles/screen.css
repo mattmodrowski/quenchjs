@@ -462,6 +462,8 @@ header {
     margin: 0 auto;
     max-width: 600px;
     text-align: justify; }
+    #about p a {
+      color: #5A7A91; }
   #about h2 {
     font-size: 1.4rem;
     letter-spacing: 0.15rem;

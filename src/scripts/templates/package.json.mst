@@ -15,12 +15,18 @@
     {{#css-autoprefix}}
     "gulp-autoprefixer": "2.1.0",
     {{/css-autoprefix}}
+    {{#js-es6}}
+    "gulp-babel": "5.1.0",
+    {{/js-es6}}
     {{#images-optimize}}
     "gulp-cache": "0.2.8",
     {{/images-optimize}}
     {{#js-concatenate}}
     "gulp-concat": "2.5.2",
     {{/js-concatenate}}
+    {{#js-hint}}
+    "gulp-jshint": "1.10.0",
+    {{/js-hint}}
     {{#images-optimize}}
     "gulp-imagemin": "2.2.1",
     {{/images-optimize}}
@@ -41,9 +47,6 @@
     {{#js-minimize}}
     "gulp-uglify": "1.2.0",
     {{/js-minimize}}
-    {{#css-remove}}
-    "gulp-uncss": "1.0.1",
-    {{/css-remove}}
     "gulp": "3.8.11"
   }
 }
