@@ -76,7 +76,7 @@ $(function(){
 	} catch (e) {}
 
 	if (!isFileSaverSupported || isSafari) {
-		$('#save-project, #toolbar-save').hide();
+		$('#save-project, #toolbar-save, #options-save-file').remove();
 		ga('send', 'event', 'FileSaver', 'Not Supported');
 	} else {
 		$('#save-project').click(function(e){
