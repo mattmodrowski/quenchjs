@@ -124,6 +124,10 @@ gulp.task('scripts', function(){
         this.emit('end');
     }}))
   {{/js-coffeescript}}
+    {{#js-hint}}
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
+    {{/js-hint}}
     {{#js-concatenate}}
     .pipe(concat('main.js'))
     {{/js-concatenate}}
