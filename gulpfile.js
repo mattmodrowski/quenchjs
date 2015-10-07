@@ -8,7 +8,9 @@ var gulp = require('gulp'),
   rename = require('gulp-rename'),
   concat = require('gulp-concat'),
   minifycss = require('gulp-minify-css'),
-  uglify = require('gulp-uglify');
+  uglify = require('gulp-uglify'),
+  postcss = require('gulp-postcss');
+
 
 gulp.task('browser-sync', function() {
   browserSync({
@@ -22,7 +24,7 @@ gulp.task('styles', function(){
   gulp.src(['src/styles/**/*.scss'])
     .pipe(sass())
     .on('error', gutil.log)
-    .pipe(autoprefixer('last 2 versions'))
+    .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
     .on('error', gutil.log)
     .pipe(gulp.dest('dist/styles/'))
     .pipe(rename({suffix: '.min'}))
