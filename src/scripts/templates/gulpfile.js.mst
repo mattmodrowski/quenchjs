@@ -114,7 +114,7 @@ gulp.task('scripts', function(){
         console.log(error.message);
         this.emit('end');
     }}))
-    .pipe(coffee({bare: true})
+    .pipe(coffee({bare: true}))
   {{/js-coffeescript}}
   {{^js-coffeescript}}
   return gulp.src('{{{js-source}}}/**/*.js')
