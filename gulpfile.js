@@ -54,7 +54,9 @@ gulp.task('bs-reload', function () {
   browserSync.reload();
 });
 
-gulp.task('default', ['browser-sync'], function () {
+gulp.task('build',['images','styles','scripts']);
+
+gulp.task('default', ['build','browser-sync'], function(){
   gulp.watch("src/styles/**/*.scss", ['styles']);
   gulp.watch("src/scripts/**/*.js", ['scripts']);
   gulp.watch("*.html", ['bs-reload']);
