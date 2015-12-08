@@ -33,8 +33,11 @@ gulp.task('styles', function(){
 
 gulp.task('images', function(){
   gulp.src('src/images/**/*')
-    .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
-    .pipe(gulp.dest('dist/images/'));
+  		.pipe(imagemin({
+  			progressive: true,
+  			svgoPlugins: [{removeViewBox: false}]
+  		}))
+  		.pipe(gulp.dest('dist/images'));
 });
 
 gulp.task('scripts', function(){
