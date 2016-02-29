@@ -278,10 +278,10 @@ function saveZip() {
 							zip.file(quench_options['css-source'] + "/base/_variables.scss", "// Variables go here\n");
 						}
 						if (quench_options['gulp-stylus']) {
-							zip.file(quench_options['css-source'] + "/screen.stylus", renderFile("screen.css", true));
-							zip.file(quench_options['css-source'] + "/base/normalize.stylus", renderFile("normalize.css", true));
-							zip.file(quench_options['css-source'] + "/base/global.stylus", "// Global CSS goes here\n");
-							zip.file(quench_options['css-source'] + "/base/variables.stylus", "// Variables go here\n");
+							zip.file(quench_options['css-source'] + "/screen.styl", renderFile("screen.css", true));
+							zip.file(quench_options['css-source'] + "/base/normalize.styl", renderFile("normalize.css", true));
+							zip.file(quench_options['css-source'] + "/base/global.styl", "// Global CSS goes here\n");
+							zip.file(quench_options['css-source'] + "/base/variables.styl", "// Variables go here\n");
 						}
 					}
 				}

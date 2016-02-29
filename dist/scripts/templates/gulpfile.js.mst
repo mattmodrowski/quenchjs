@@ -155,7 +155,7 @@ gulp.task('default', {{#browser-sync}}['browser-sync'], {{/browser-sync}}functio
   gulp.watch("{{{css-source}}}/**/*.scss", ['styles']);
   {{/gulp-sass}}
   {{#gulp-stylus}}
-  gulp.watch("{{{css-source}}}/**/*.stylus", ['styles']);
+  gulp.watch("{{{css-source}}}/**/*.styl", ['styles']);
   {{/gulp-stylus}}
   {{/css}}
   {{#js}}
